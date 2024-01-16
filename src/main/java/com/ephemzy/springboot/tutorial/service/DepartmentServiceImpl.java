@@ -2,12 +2,14 @@ package com.ephemzy.springboot.tutorial.service;
 
 
 import com.ephemzy.springboot.tutorial.entity.Department;
+import com.ephemzy.springboot.tutorial.error.DepartmentNotFoundException;
 import com.ephemzy.springboot.tutorial.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService{
@@ -26,8 +28,12 @@ public class DepartmentServiceImpl implements DepartmentService{
     }
 
     @Override
-    public Department getDepartmentById(Long departmentId) {
-        return repository.findById(departmentId).orElseThrow(()-> new IllegalStateException("Student with id " + departmentId + " does not exists"));
+    public Department getDepartmentById(Long departmentId) throws DepartmentNotFoundException {
+        Optional<Department> department =  repository.findById(departmentId);
+         if (!department.isPresent()){
+             throw new DepartmentNotFoundException("Department Not Available");
+         }
+         return department.get();
     }
 
     @Override

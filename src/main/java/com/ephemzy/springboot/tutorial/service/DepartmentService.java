@@ -1,6 +1,7 @@
 package com.ephemzy.springboot.tutorial.service;
 
 import com.ephemzy.springboot.tutorial.entity.Department;
+import com.ephemzy.springboot.tutorial.error.DepartmentNotFoundException;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ public interface DepartmentService {
 
     List<Department> getDepartments();
 
-    Department getDepartmentById(Long departmentId);
+    Department getDepartmentById(Long departmentId) throws DepartmentNotFoundException;
 
     void deleteDepartmentById(Long departmentId);
 

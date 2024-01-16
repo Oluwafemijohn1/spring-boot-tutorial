@@ -1,6 +1,7 @@
 package com.ephemzy.springboot.tutorial.controller;
 
 import com.ephemzy.springboot.tutorial.entity.Department;
+import com.ephemzy.springboot.tutorial.error.DepartmentNotFoundException;
 import com.ephemzy.springboot.tutorial.service.DepartmentService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -30,7 +31,7 @@ public class DepartmentController {
     }
 
     @GetMapping("departments/{id}")
-    public Department getDepartmentById(@PathVariable("id") Long departmentId){
+    public Department getDepartmentById(@PathVariable("id") Long departmentId) throws DepartmentNotFoundException {
         LOGGER.info("Inside getDepartmentById inside DepartmentController");
         return departmentService.getDepartmentById(departmentId);
     }

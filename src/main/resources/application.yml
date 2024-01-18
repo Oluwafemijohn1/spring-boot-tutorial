@@ -1,0 +1,89 @@
+# To deploy the app
+# java -jar spring-boot-tutorial-1.0.0.jar --spring.profiles.active=prod
+server:
+  port: 8082
+  error:
+    include-message: always
+
+spring:
+  profiles:
+    active: qa
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/dcbapp
+    password: Emmanuel@1803
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Welcome to daily code buffer!!!!
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env,beans"
+
+---
+spring:
+  config:
+    activate:
+      on-profile: qa
+  datasource:
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/dcbapp-qa
+    password: Emmanuel@1803
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Welcome to daily code buffer!!!!
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env,beans"
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/dcbapp-prod
+    password: Emmanuel@1803
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Welcome to daily code buffer!!!!
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env,beans"

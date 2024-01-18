@@ -51,19 +51,19 @@ public class DepartmentServiceImpl implements DepartmentService{
                 .orElseThrow(() -> new IllegalStateException("Student with id " + departmentId + " does not exists"));
 
          if (Objects.nonNull(department.getDepartmentName())
-                 && !"".equals(department.getDepartmentName())
+                 && !department.getDepartmentName().isEmpty()
                  &&  !departmentDb.getDepartmentName().equalsIgnoreCase(department.getDepartmentName())){
              departmentDb.setDepartmentName(department.getDepartmentName());
          }
 
         if (Objects.nonNull(department.getDepartmentAddress())
-                && !"".equals(department.getDepartmentAddress())
+                && !department.getDepartmentAddress().isEmpty()
                 &&  !departmentDb.getDepartmentAddress().equalsIgnoreCase(department.getDepartmentAddress())){
             departmentDb.setDepartmentAddress(department.getDepartmentAddress());
         }
 
         if (Objects.nonNull(department.getDepartmentCode())
-                && !"".equals(department.getDepartmentCode())
+                && !department.getDepartmentCode().isEmpty()
                 &&  !departmentDb.getDepartmentCode().equalsIgnoreCase(department.getDepartmentCode())){
             departmentDb.setDepartmentCode(department.getDepartmentCode());
         }

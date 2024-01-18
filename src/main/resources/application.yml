@@ -28,6 +28,11 @@ spring:
     show-sql: true
 welcome:
   message: Welcome to daily code buffer!!!!
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 ---
 spring:
@@ -49,6 +54,12 @@ spring:
 welcome:
   message: Welcome to daily code buffer!!!!
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
 ---
 spring:
   config:
@@ -68,3 +79,8 @@ spring:
     show-sql: true
 welcome:
   message: Welcome to daily code buffer!!!!
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

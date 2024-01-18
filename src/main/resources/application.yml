@@ -1,4 +1,17 @@
+server:
+  port: 8082
+  error:
+    include-message: always
+
 spring:
+  profiles:
+    active: qa
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
   datasource:
     username: postgres
     url: jdbc:postgresql://localhost:5432/dcbapp
@@ -7,13 +20,49 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: 'true'
+        format_sql: true
     hibernate:
       ddl-auto: update
-    show-sql: 'true'
+    show-sql: true
 welcome:
   message: Welcome to daily code buffer!!!!
-server:
-  port: '8082'
-  error:
-    include-message: always
+
+---
+spring:
+  config:
+    activate:
+      on-profile: qa
+  datasource:
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/dcbapp-qa
+    password: Emmanuel@1803
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Welcome to daily code buffer!!!!
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/dcbapp-prod
+    password: Emmanuel@1803
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Welcome to daily code buffer!!!!

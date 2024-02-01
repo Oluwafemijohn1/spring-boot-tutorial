@@ -2,4 +2,4 @@
 Spring boot tutorial by daily code buffer
 Part 3 from the 9 hours course
 
-Technologies: Postgres, Error Handling, dev, QA, productions deployment.
+Technologies: Postgres, H2 database, Error Handling, dev, QA, productions 
